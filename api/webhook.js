@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 
 export default async function handler(req, res) {
   try {
-    const publicKey = fs.readFileSync("./thinky_public.pem", "utf8");
+   const publicKey = process.env.JWT_PUBLIC_KEY;
     const auth = req.headers.authorization || "";
     const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
 
